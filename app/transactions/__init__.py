@@ -58,7 +58,7 @@ def transactions_upload():
         current_user.transactions = list_of_transactions
         db.session.commit()
 
-        return redirect(url_for('transactions.transaction_browse'))
+        return redirect(url_for('transactions.transactions_browse'))
     
     try:
         return render_template('upload.html', form=form)

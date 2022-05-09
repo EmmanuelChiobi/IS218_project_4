@@ -2,6 +2,10 @@ import click
 from flask.cli import with_appcontext
 from app.db import db
 
+@click.command(name='create-log')
+@with_appcontext
+def create_logs():
+    
 
 @click.command(name='create-db')
 @with_appcontext
