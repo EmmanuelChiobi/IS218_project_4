@@ -1,4 +1,4 @@
-"""This test the homepage"""
+"""This test the homepage's authentication"""
 
 def test_request_main_menu_links(client):
     """This requests access to the main menu links (login and register)"""
