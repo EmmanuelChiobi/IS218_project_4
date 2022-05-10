@@ -8,7 +8,7 @@ def test_request_main_menu_links(client):
     assert b'href="/register"' in response.data
 
 def test_auth_pages(client):
-    """This authenticates access to the login and registration pages"""
+    """This authenticates access to the login, registration, and dashboard pages"""
     response = client.get("/dashboard")
     assert response.status_code == 302
     response = client.get("/register")

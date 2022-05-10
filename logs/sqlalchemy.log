@@ -2,3 +2,15 @@
 2022-05-08 23:46:44,889 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
 2022-05-08 23:46:44,890 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
 2022-05-08 23:46:44,904 [INFO] sqlalchemy.engine.Engine: COMMIT
+2022-05-09 16:19:12,343 [INFO] sqlalchemy.engine.Engine: BEGIN (implicit)
+2022-05-09 16:19:12,345 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
+2022-05-09 16:19:12,345 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-09 16:19:12,347 [INFO] sqlalchemy.engine.Engine: COMMIT
+2022-05-09 16:22:20,300 [INFO] sqlalchemy.engine.Engine: BEGIN (implicit)
+2022-05-09 16:22:20,301 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
+2022-05-09 16:22:20,301 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-09 16:22:20,302 [INFO] sqlalchemy.engine.Engine: COMMIT
+2022-05-09 21:09:20,416 [INFO] sqlalchemy.engine.Engine: BEGIN (implicit)
+2022-05-09 21:09:20,417 [INFO] sqlalchemy.engine.Engine: PRAGMA main.table_info("users")
+2022-05-09 21:09:20,418 [INFO] sqlalchemy.engine.Engine: [raw sql] ()
+2022-05-09 21:09:20,421 [INFO] sqlalchemy.engine.Engine: COMMIT

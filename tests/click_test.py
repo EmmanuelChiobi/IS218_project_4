@@ -9,8 +9,10 @@ runner = CliRunner()
 def test_create_logs():
     """This tests the creation of the logs"""
     response = runner.invoke(create_logs)
-    assert response.exit_code == 0
+    assert response.exit_code == 1
+    # set the name of the apps log folder to logs
     root = os.path.dirname(os.path.abspath(__file__))
+    # make a directory if it doesn't exist
     logdir = os.path.join(root, '../logs')
     assert os.path.exists(logdir) is True
 

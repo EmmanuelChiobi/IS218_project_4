@@ -10,7 +10,7 @@ from flask_mail import Mail
 from flask_wtf.csrf import CSRFProtect
 
 from app.auth import auth
-from app.cli import create_database
+from app.cli import create_database, create_logs
 from app.context_processors import utility_text_processors
 from app.db import db, database
 from app.db.models import User
@@ -56,6 +56,7 @@ def create_app():
     app.context_processor(utility_text_processors)
 
     # add command function to cli commands
+    app.cli.add_command(create_logs)
     app.cli.add_command(create_database)
     db.init_app(app)
     api_v1_cors_config = {
