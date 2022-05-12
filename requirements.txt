@@ -38,6 +38,7 @@ pytest-cov==3.0.0
 pytest-pylint==0.18.0
 six==1.16.0
 SQLAlchemy==1.4.34
+SQLAlchemy-serializer
 toml==0.10.2
 tomli==2.0.1
 typing_extensions==4.1.1
