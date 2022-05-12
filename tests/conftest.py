@@ -12,7 +12,6 @@ def application():
     os.environ['FLASK_ENV'] = 'testing'
     application = create_app()
     with application.app_context():
-        db.create_all()
         application.config.update({
             "TESTING": True,
         })
