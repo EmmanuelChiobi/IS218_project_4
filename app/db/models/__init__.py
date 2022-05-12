@@ -7,7 +7,9 @@ from app.db import db
 from flask_login import UserMixin
 from sqlalchemy_serializer import SerializerMixin
 
-class Transaction(UserMixin, SerializerMixin):
+Base = declarative_base()
+
+class Transaction(db.Model, SerializerMixin):
     __tablename__ = 'transactions'
     id = db.Column(db.Integer, primary_key=True)
     amount = db.Column(db.Integer, nullable=False, unique=False)
@@ -21,8 +23,8 @@ class Transaction(UserMixin, SerializerMixin):
     
     def serialize(self):
         return {
-            'amount': self.amount,
-            'type': self.type,
+            'AMOUNT': self.amount,
+            'TYPE': self.type,
         }
 
 class User(UserMixin, db.Model):
@@ -36,8 +38,8 @@ class User(UserMixin, db.Model):
     active = db.Column('is_active', db.Boolean(), nullable=False, server_default='1')
     is_admin = db.Column('is_admin', db.Boolean(), nullable=False, server_default='0')
     balance = db.Column(db.Float, nullable=True, unique=False, default="0.00")
-    transactions = db.relationship("Transactions", back_populates="user", cascade="all,delete")
-
+    transactions = db.relationship("Transaction", back_populates="user", cascade="all, delete")
+    
     # `roles` and `groups` are reserved words that *must* be defined
     # on the `User` model to use group- or role-based authorization.
 
