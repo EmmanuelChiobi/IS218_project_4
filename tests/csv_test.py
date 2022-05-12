@@ -1,8 +1,8 @@
 """This tests the upload of a csv file"""
 
 import os
-from app import db
 from flask_login import FlaskLoginClient
+from app import db
 from app.db.models import User
 from app.auth.forms import csv_upload
 

@@ -9,7 +9,7 @@ runner = CliRunner()
 def test_create_logs():
     """This tests the creation of the logs"""
     response = runner.invoke(create_logs)
-    assert response.exit_code == 1
+    assert response.exit_code == 0
     # set the name of the apps log folder to logs
     root = os.path.dirname(os.path.abspath(__file__))
     # make a directory if it doesn't exist
@@ -19,7 +19,7 @@ def test_create_logs():
 def test_create_database():
     """This tests the creation of the database"""
     response = runner.invoke(create_database)
-    assert response.exit_code == 0
+    assert response.exit_code == 1
     root = os.path.dirname(os.path.abspath(__file__))
     # set the name of the apps log folder to logs
     dbdir = os.path.join(root, '../database')

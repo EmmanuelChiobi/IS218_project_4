@@ -85,3 +85,4 @@ def csv_log_test():
         os.mkdir(csv)
     # assert if the directory exists
     assert os.path.exists(csv) is True
+    
