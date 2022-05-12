@@ -1,8 +1,8 @@
 """This tests the upload of a csv file"""
 
 import os
-from flask_login import FlaskLoginClient
 from app import db
+from flask_login import FlaskLoginClient
 from app.db.models import User
 from app.auth.forms import csv_upload
 
@@ -31,3 +31,16 @@ def test_csv_upload_denied(application):
     with application.test_client (user = None) as client:
         response = client.get('/transactions/upload')
         assert response.status_code == 404
+
+def test_user_balance(application):
+    """This tests the calculation of a user's balance"""
+    application.test_client_class = FlaskLoginClient
+    user = User('bobgale@gmail.com', 'newtest', True)
+    db.session.add(user)
+    db.session.commit()
+    assert user.email == 'bobgale@gmail.com'
+    assert user.balance == 0.00
+    user.balance += 4.20
+    assert user.balance == 4.20
+    user.balance -= 2.50
+    assert user.balance == 1.70
