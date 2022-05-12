@@ -43,13 +43,14 @@ def transactions_upload():
         fpath = os.path.join(current_app.config['UPLOAD_FOLDER'], fname)
         form.file.data.save(fpath)
         list_of_transactions = []
+        current_user.balance = 0.00
         with open(fpath) as file:
             csv_file = csv.DictReader(file)
             for row in csv_file:
-                transaction = Transaction.query.filter_by(title=row['']).first()
+                transaction = Transaction.query.filter_by(AMOUNT=row['\ufeffAMOUNT']).first()
                 if transaction is None:
-                    current_user.balance += row['AMOUNT']
-                    current_user.transactions.append(Transaction(row['AMOUNT'], row['TYPE']))
+                    current_user.balance += row['\ufeffAMOUNT']
+                    current_user.transactions.append(Transaction(row['\ufeffAMOUNT'], row['TYPE']))
                     db.session.commit()
                 else:
                     current_user.transactions.append(transaction)

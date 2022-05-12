@@ -2,7 +2,7 @@
 
 import logging
 
-from app import db 
+from app import db
 from app.db.models import User, Transaction
 
 def test_adding_user(application):

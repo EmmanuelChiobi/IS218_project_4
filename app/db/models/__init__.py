@@ -35,6 +35,7 @@ class User(UserMixin, db.Model):
     registered_on = db.Column('registered_on', db.DateTime)
     active = db.Column('is_active', db.Boolean(), nullable=False, server_default='1')
     is_admin = db.Column('is_admin', db.Boolean(), nullable=False, server_default='0')
+    balance = db.Column(db.Float, nullable=True, unique=False, default="0.00")
     transactions = db.relationship("Transactions", back_populates="user", cascade="all,delete")
 
     # `roles` and `groups` are reserved words that *must* be defined
