@@ -73,6 +73,20 @@ LOGGING_CONFIG = {
             'maxBytes': 10000000,
             'backupCount': 5,
         },
+        'file.handler.debug': {
+            'class': 'logging.handlers.RotatingFileHandler',
+            'formatter': 'standard',
+            'filename': os.path.join(config.Config.LOG_DIR,'debug.log'),
+            'maxBytes': 10000000,
+            'backupCount': 5,
+        },
+        'file.handler.flask': {
+            'class': 'logging.handlers.RotatingFileHandler',
+            'formatter': 'standard',
+            'filename': os.path.join(config.Config.LOG_DIR,'flask.log'),
+            'maxBytes': 10000000,
+            'backupCount': 5,
+        },
         'file.handler.sqlalchemy': {
             'class': 'logging.handlers.RotatingFileHandler',
             'formatter': 'standard',
@@ -87,10 +101,10 @@ LOGGING_CONFIG = {
             'maxBytes': 10000000,
             'backupCount': 5,
         },
-        'file.handler.csv_upload': {
+        'file.handler.csvupdate': {
             'class': 'logging.handlers.RotatingFileHandler',
             'formatter': 'standard',
-            'filename': os.path.join(config.Config.LOG_DIR,'csv_upload.log'),
+            'filename': os.path.join(config.Config.LOG_DIR,'csvupdate.log'),
             'maxBytes': 10000000,
             'backupCount': 5,
         },
@@ -106,6 +120,11 @@ LOGGING_CONFIG = {
             'level': 'DEBUG',
             'propagate': True
         },
+        'request': {  # if __name__ == '__main__'
+            'handlers': ['default','file.handler.request'],
+            'level': 'DEBUG',
+            'propagate': False
+        },
         'werkzeug': {  # if __name__ == '__main__'
             'handlers': ['file.handler.werkzeug'],
             'level': 'DEBUG',
@@ -114,6 +133,16 @@ LOGGING_CONFIG = {
         'sqlalchemy.engine': {  # if __name__ == '__main__'
             'handlers': ['file.handler.sqlalchemy'],
             'level': 'INFO',
+            'propagate': False
+        },
+        'debug': {  # if __name__ == '__main__'
+            'handlers': ['file.handler.debug'],
+            'level': 'DEBUG',
+            'propagate': False
+        },
+        'flask': {  # if __name__ == '__main__'
+            'handlers': ['file.handler.flask'],
+            'level': 'DEBUG',
             'propagate': False
         },
         'myApp': {  # if __name__ == '__main__'
@@ -126,8 +155,8 @@ LOGGING_CONFIG = {
             'level': 'DEBUG',
             'propagate': False
         },
-        'csv_upload': { # if __name__ == '__main__'
-            'handlers': ['file.handler.csv_upload'],
+        'csvupdate': { # if __name__ == '__main__'
+            'handlers': ['file.handler.csvupdate'],
             'level': 'DEBUG',
             'propagate': False
         },

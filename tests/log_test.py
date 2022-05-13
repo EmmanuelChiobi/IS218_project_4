@@ -79,10 +79,9 @@ def csv_log_test():
     # initialize the root
     root = os.path.dirname(os.path.abspath(__file__))
     # initialize the log file
-    csv = os.path.join(root, '../logs/updatecsv.log')
+    csv = os.path.join(root, '../logs/csvupdate.log')
     # make directory if it does not exist
     if not os.path.exists(csv):
         os.mkdir(csv)
     # assert if the directory exists
     assert os.path.exists(csv) is True
-    

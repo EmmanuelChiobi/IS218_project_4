@@ -19,7 +19,7 @@ def test_create_logs():
 def test_create_database():
     """This tests the creation of the database"""
     response = runner.invoke(create_database)
-    assert response.exit_code == 1
+    assert response.exit_code == 0
     root = os.path.dirname(os.path.abspath(__file__))
     # set the name of the apps log folder to logs
     dbdir = os.path.join(root, '../database')

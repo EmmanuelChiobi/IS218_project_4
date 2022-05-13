@@ -1,6 +1,4 @@
 from datetime import datetime
-
-from sqlalchemy import Integer, ForeignKey
 from sqlalchemy.orm import relationship, declarative_base
 from werkzeug.security import check_password_hash, generate_password_hash
 from app.db import db
@@ -12,19 +10,19 @@ Base = declarative_base()
 class Transaction(db.Model, SerializerMixin):
     __tablename__ = 'transactions'
     id = db.Column(db.Integer, primary_key=True)
-    amount = db.Column(db.Integer, nullable=False, unique=False)
-    type = db.Column(db.String(6), nullable=False, unique=False)
+    AMOUNT = db.Column(db.Integer, nullable=False, unique=False)
+    TYPE = db.Column(db.String(6), nullable=False, unique=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     user = relationship("User", back_populates="transactions", uselist=False)
 
-    def __init__ (self, amount, type):
-        self.amount = amount
-        self.type = type
+    def __init__ (self, AMOUNT, TYPE):
+        self.AMOUNT = AMOUNT
+        self.TYPE = TYPE
     
     def serialize(self):
         return {
-            'AMOUNT': self.amount,
-            'TYPE': self.type,
+            'AMOUNT': self.AMOUNT,
+            'TYPE': self.TYPE,
         }
 
 class User(UserMixin, db.Model):
