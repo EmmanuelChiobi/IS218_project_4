@@ -8,17 +8,17 @@ def test_adding_user(application):
     """This tests the addition of a user"""
     log = logging.getLogger("myApp")
     with application.app_context():
-        assert db.session.query(User).count() == 0
+        assert db.session.query(User).count() == 2
         assert db.session.query(Transaction).count() == 0
         # create a user (record)
-        user = User('bobgale@gmail.com', 'newtest', 1)
+        user = User('keith@webizly.com', 'testtest', 1)
         # add record
         db.session.add(user)
         # find user by email
-        user = User.query.filter_by(email='bobgale@gmail.com').first()
+        user = User.query.filter_by(email='keith@webizly.com').first()
         log.info(user)
         # assert that email is correct
-        assert user.email == 'bobgale@gmail.com'
+        assert user.email == 'keith@webizly.com'
         # insert attributes to related record
         user.transactions = [Transaction(-1647, "DEBIT"), Transaction(5164, "CREDIT")]
         # transactions are saved via commit
@@ -34,5 +34,5 @@ def test_adding_user(application):
         assert trans2.AMOUNT == 5164
         # checking cascade delete
         db.session.delete(user)
-        assert db.session.query(User).count() == 0
+        assert db.session.query(User).count() == 2
         assert db.session.query(Transaction).count() == 0
