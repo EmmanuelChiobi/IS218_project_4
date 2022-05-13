@@ -8,7 +8,7 @@ def test_adding_user(application):
     """This tests the addition of a user"""
     log = logging.getLogger("myApp")
     with application.app_context():
-        assert db.session.query(User).count() == 2
+        assert db.session.query(User).count() == 0
         assert db.session.query(Transaction).count() == 0
         # create a user (record)
         user = User('bobgale@gmail.com', 'newtest', 1)
